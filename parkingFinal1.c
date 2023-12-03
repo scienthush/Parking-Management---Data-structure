@@ -348,49 +348,6 @@ void generateReports()
     system("cls");
 }
 
-
-// Function to load vehicle data from a file
-void loadVehicleDataFromFile()
-{
-    FILE *file = fopen("vehicle_data.txt", "r");
-    if (file == NULL)
-    {
-        printf("Error: Unable to open file for reading.\n");
-        return;
-    }
-
-    char line[50];
-
-    while (fgets(line, sizeof(line), file) != NULL)
-    {
-        char *ticket = strtok(line, ",");
-        char *licensePlate = strtok(NULL, ",");
-        int type = atoi(strtok(NULL, ","));
-
-        struct Vehicle newVehicle;
-        strcpy(newVehicle.ticket, ticket);
-        strcpy(newVehicle.licensePlate, licensePlate);
-        newVehicle.type = type;
-
-        struct Node *newNode = createNode(newVehicle);
-        if (vehicles == NULL)
-        {
-            vehicles = newNode;
-        }
-        else
-        {
-            struct Node *current = vehicles;
-            while (current->next != NULL)
-            {
-                current = current->next;
-            }
-            current->next = newNode;
-        }
-    }
-
-    fclose(file);
-}
-
 //function to read  vehicle data from file
 void readVehicleFile()
 {
