@@ -184,8 +184,6 @@ void exitVehicle()
         if (found)
         {
 
-            time_t exitTime;
-            time(&exitTime);
 
             double parkingFee = calculateParkingFee(exitingVehicle);
             printf("-----------------------------------------------------\n");
